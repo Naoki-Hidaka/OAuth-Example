@@ -1,17 +1,25 @@
 version: "3.9"
 services:
-  authorization:
+  authorization_server:
     build: ./Authorization-Server
     ports:
       - "8091:8091"
-  resource:
+  resource_server:
     build: ./Resource-Server
     ports:
       - "8092:8092"
-  postgres:
+  authorization_postgres:
     image: postgres:16
     ports:
       - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: oauth2
+  resource_postgres:
+    image: postgres:16
+    ports:
+      - "5434:5432"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
