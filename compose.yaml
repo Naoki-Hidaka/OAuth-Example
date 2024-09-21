@@ -8,6 +8,10 @@ services:
     build: ./Resource-Server
     ports:
       - "8092:8092"
+  client_example:
+    build: ./client-example
+    ports:
+      - "8090:8090"
   authorization_postgres:
     image: postgres:16
     ports:
